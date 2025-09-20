@@ -5,5 +5,5 @@ services:
     ports:
       - "80:3000"
     environment:
-      NEXT_PUBLIC_API_URL: http://<IP_BACKEND>:25000/api/pokemon
+      NEXT_PUBLIC_API_URL: http://18.234.224.6:25000/api/pokemon
     restart: unless-stopped
