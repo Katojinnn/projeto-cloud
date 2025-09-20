@@ -1,0 +1,94 @@
+.container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.search {
+  margin-bottom: 2rem;
+}
+
+.input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 200px;
+  margin-right: 0.5rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.loading {
+  font-size: 1.1rem;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.card {
+  display: inline-block;
+  background-color: #36353527;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  min-width: 300px;
+}
+
+.pokemonName {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.pokemonImage {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.typeBadge {
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin: 0 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.statsContainer {
+  margin-top: 1rem;
+}
+
+.statBarBackground {
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 12px;
+  width: 100%;
+  max-width: 200px;
+  margin: 2px auto;
+}
+
+.statBarFill {
+  background-color: #4caf50;
+  height: 100%;
+}
+
+.statsTitle {
+  margin-top: 1rem;
+}

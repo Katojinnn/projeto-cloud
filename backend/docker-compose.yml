@@ -1,0 +1,7 @@
+services:
+  backend:
+    build: .
+    container_name: pokemon-backend
+    ports:
+      - "25000:25000"
+    restart: unless-stopped

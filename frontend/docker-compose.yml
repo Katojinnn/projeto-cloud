@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build: .
+    container_name: pokemon-frontend
+    ports:
+      - "80:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://<IP_BACKEND>:25000/api/pokemon
+    restart: unless-stopped
