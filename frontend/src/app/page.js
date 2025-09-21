@@ -36,7 +36,7 @@ export default function Home() {
     setError('');
     setPokemon(null);
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}?name=${name}`)
+    fetch(`http://54.167.69.54:25000/api/pokemon?name=${name}`)
       .then(res => {
         if (!res.ok) {
           return res.json().then(err => {
