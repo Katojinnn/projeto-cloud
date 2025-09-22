@@ -15,4 +15,4 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 ENV NODE_ENV=production
 EXPOSE 8080
-CMD ["npx", "next", "start", "-H", "0.0.0.0", "-p", "8080"]
+CMD ["npx", "next", "start", "-H", "0.0.0.0", "-p", "3000"]
