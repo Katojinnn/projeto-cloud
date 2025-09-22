@@ -1,29 +1,30 @@
-# Etapa 1: build
-FROM node:20 AS build
+# Etapa base
+FROM node:18-alpine AS base
 WORKDIR /app
 
-# Copia apenas os arquivos de dependências
+# Dependências
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
 COPY package*.json ./
+RUN npm ci
 
-# Instala dependências
-RUN npm install
-
-# Copia o restante do código
+# Build do Next.js
+FROM base AS builder
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Build da aplicação
+# Gera build standalone
 RUN npm run build
 
-# Etapa 2: runtime
-FROM node:20
+# Imagem final para rodar o frontend
+FROM node:18-alpine AS runner
 WORKDIR /app
-
-# Copia apenas o build e node_modules do estágio anterior
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY --from=build /app/package*.json ./
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+ENV NODE_ENV=production
+RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./.next/standalone
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+USER nextjs
+EXPOSE 8080
+ENV PORT=8080
+ENV HOSTNAME="0.0.0.0"
+CMD ["node", ".next/standalone/server.js"]
